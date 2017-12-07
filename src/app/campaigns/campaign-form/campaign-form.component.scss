@@ -1,0 +1,55 @@
+
+h3 {
+  margin: 20px;
+  font-weight: 600;
+  font-size: 20px;
+}
+.campaign-add {
+  margin: 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pd-24 {
+  padding: 24px;
+}
+.campaign-add-form {
+  flex-grow: 2;
+}
+// .form-fields {
+//   flex-grow: 2;
+//   padding: 20px;
+//   min-width: 300px;
+// }
+.dropzone-field {
+  flex-grow: 1;
+}
+.time-range {
+  padding: 0;
+  mat-slider {
+    width: 100%;
+    padding: 24px;
+  }
+  mat-checkbox {
+    margin-right: 20px;
+  }
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+.budget-input {
+  width: 100%;
+}
+.moderation-btn {
+  background-color: #52bb56;
+  color: #fff;
+}
+// .datepicker {
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: space-between;
+//   mat-form-field {
+//     flex-grow: 1;
+//   }
+// }

@@ -1,0 +1,39 @@
+body {
+    margin: 0 auto;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+.mat-drawer-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.mr-20 {
+margin: 20px;
+}
+.mat-card.page-title {
+  color: #797979; 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  line-height: 50px;
+  padding: 10px;
+  h4 {
+    margin: 0;
+  }
+  p {
+    margin: 0;
+  }
+  a {
+    text-decoration: none;
+    color: #797979; 
+  }
+}
+ .border-rad {
+    border: 1px solid rgb(230, 230, 230);
+    border-radius: 5px;
+  }
+  .full-width {
+    width: 100%;
+}

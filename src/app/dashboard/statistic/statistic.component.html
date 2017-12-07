@@ -1,0 +1,42 @@
+
+<div class="mr-20">
+    <mat-table class="border-rad" #table [dataSource]="dataSource">
+
+        <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+            <mat-header-cell *matHeaderCellDef> # </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef> Campaign name </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="datefrom">
+            <mat-header-cell *matHeaderCellDef> Start Date </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.datefrom}} </mat-cell>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="dateto">
+            <mat-header-cell *matHeaderCellDef> Due date </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.dateto}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="rotations">
+            <mat-header-cell *matHeaderCellDef> Rotations </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.rotations}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="displaytime">
+            <mat-header-cell *matHeaderCellDef> Display Time </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.displaytime}} </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>
