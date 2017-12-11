@@ -9,61 +9,56 @@
 <div class="charts">
   <div class="chart-sm">
     <div class="chart1 border-rad">
-      <div class="icon-box">
-        <mat-icon class="icon-fit">remove_red_eye</mat-icon>
+      <div class="icon-box icon-box-blue ">
+        <mat-icon class="icon-fit">attach_money</mat-icon>
       </div>
       <div>
-        <h2>3,570</h2>
-        <h4>Add iterations</h4>
+        <h2>{{ wallet.amount }} EUR</h2>
+        <h4>Current balance</h4>
       </div>
 
     </div>
   </div>
   <div class="chart-lg border-rad">
     <h4>Top up account</h4>
-    <form>
-      <mat-form-field>
-       <span>Amount</span> <input matInput placeholder="Amount to topup" type="text">
+    <form [formGroup]="form" (ngSubmit)="onSave(f)" #f="ngForm">
+      <mat-form-field [formGroup]="form">
+       <input matInput placeholder="Amount to topup" type="text" name="topUp" id="WalletTopUp" formControlName="amount" class="form-control" [(ngModel)]="wallet.amount">
       </mat-form-field>
       <button mat-raised-button color="primary" type="submit">Top up</button>
     </form>      
   </div>
 </div>
-<div class="charts mr-20">
-  <div class="chart-lg">
+<div class="charts">
+  <div class="chart-lg chart-wallet border-rad">
   <h4>Transaction history</h4>
-  <mat-table #table [dataSource]="dataSource">
+  <!-- <mat-table #table [dataSource]="dataSource">
   
-    <!--- Note that these columns can be defined in any order.
-            The actual rendered columns are set as a property on the row definition" -->
   
-    <!-- Position Column -->
     <ng-container matColumnDef="date">
       <mat-header-cell *matHeaderCellDef> # </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+      <mat-cell *matCellDef="let element"></mat-cell>
     </ng-container>
   
-    <!-- Name Column -->
+ 
     <ng-container matColumnDef="status">
       <mat-header-cell *matHeaderCellDef> Campaign name </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      <mat-cell *matCellDef="let element"></mat-cell>
     </ng-container>
-  
-    <!-- Weight Column -->
+
     <ng-container matColumnDef="action">
       <mat-header-cell *matHeaderCellDef> Start Date </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.datefrom}} </mat-cell>
+      <mat-cell *matCellDef="let element"></mat-cell>
     </ng-container>
   
-    <!-- Symbol Column -->
     <ng-container matColumnDef="sum">
       <mat-header-cell *matHeaderCellDef> Due date </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.dateto}} </mat-cell>
+      <mat-cell *matCellDef="let element"></mat-cell>
     </ng-container>
  
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
+  </mat-table> -->
 </div>
 </div>
 

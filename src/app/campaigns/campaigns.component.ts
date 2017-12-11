@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Campaign } from './shared/campaign';
 import { CampaignsService } from './shared/campaigns.service';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 // import { Response } from '_debugger';
 
 @Component({
@@ -11,7 +11,6 @@ import { MatTableDataSource } from '@angular/material';
   styleUrls: ['./campaigns.component.scss']
 })
 
-
 export class CampaignsComponent implements OnInit {
 
   campaigns: Campaign[] = [];
@@ -19,11 +18,20 @@ export class CampaignsComponent implements OnInit {
   // lenteles atvaizdavimui
   displayedColumns = ['id', 'title', 'datefrom', 'dateto', 'actions'];
   dataSource = new MatTableDataSource();
-
+  // lenteles rusiavimui
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private router: Router,
     private activatedRoute: ActivatedRoute,
     private campaignsService: CampaignsService, ) { }
+
+
+    applyFilter(filterValue: string) {
+      filterValue = filterValue.trim(); // Remove whitespace
+      filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+      this.dataSource.filter = filterValue;
+    }
 
   ngOnInit() {
         this.activatedRoute.params.subscribe(params => {
@@ -35,7 +43,9 @@ export class CampaignsComponent implements OnInit {
 
           this.title = status + ' Campaigns';
           this.campaignsService.getCampaigns(status).subscribe(
-            campaigns => { this.campaigns = campaigns; this.dataSource = new MatTableDataSource(campaigns);  },
+            campaigns => { this.campaigns = campaigns; this.dataSource = new MatTableDataSource(campaigns); 
+              this.dataSource.sort = this.sort;
+              this.dataSource.paginator = this.paginator; },
              (error: Response) => console.log(error));
       });
       }

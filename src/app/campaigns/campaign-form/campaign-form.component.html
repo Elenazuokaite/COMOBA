@@ -38,9 +38,7 @@
         <form>
             <div>
                 <p>Asets</p>
-                <mat-form-field>
-                    <textarea matInput placeholder="Dropzone"></textarea>
-                </mat-form-field>
+                <div class="dropzone" [dropzone]="config" (error)="onUploadError($event)" (success)="onUploadSuccess($event)"></div>
             </div>
         </form>
     </div>
