@@ -23,6 +23,15 @@ export class WalletService{
                 }
             );
           }
+          getTransaction(): Observable<any> {
+            const token = this.auth.getToken();
+            return this.authHttp.get(this.baseApiUrl + '/user/wallet/transaction')
+                .map(
+                    (response: Response) => {
+                        return response.json();
+                    }
+                );
+              }
 
          addTopUp(topUp: any) {
 

@@ -1,19 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Wallet } from './shared/wallet';
+import { Transaction } from './shared/transaction';
 import { WalletService } from './shared/wallet.service';
 import { AuthService } from '../auth.service';
 import {FormBuilder, FormGroup, Validators, FormsModule} from '@angular/forms';
+import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 @Component({
   selector: 'app-wallet',
   templateUrl: './wallet.component.html',
   styleUrls: ['./wallet.component.scss']
 })
 export class WalletComponent implements OnInit {
+  displayedColumns = ['date', 'status', 'action', 'sum'];
+  dataSource = new MatTableDataSource();
   form: FormGroup;
   
     profile: any;
-  
+
+    transaction: Transaction = new Transaction();
+
     wallet: Wallet = new Wallet();
   constructor(public auth: AuthService,
     private walletService: WalletService,
@@ -26,8 +32,14 @@ export class WalletComponent implements OnInit {
 
      ngOnInit() {
       this.walletService.getTopUp().subscribe(
-        wallet => { this.wallet = wallet; }
+        wallet => { this.wallet = wallet; }        
       ); 
+      this.walletService.getTransaction().subscribe(
+        transaction => { this.transaction = transaction; this.dataSource = new MatTableDataSource(transaction);
+          console.log(transaction);
+        }        
+      ); 
+
      }
 
     onSave() {

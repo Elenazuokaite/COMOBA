@@ -4,140 +4,103 @@
 </div>
 
 <router-outlet></router-outlet> -->
-<mat-sidenav-container class="container-fluid">
-  <mat-sidenav #sidenav mode="side" opened="true">
-    <mat-toolbar class="brand-name" color="primary">
-      <h1 class="app-name">COMOBA</h1>
-    </mat-toolbar>
-    <nav>
-      <app-sidebar></app-sidebar>
-    </nav>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary" class="toolbar">
-      <button mat-icon-button (click)="sidenav.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-
-<!--notifications   -->
-<ul class="notification-list">
-  <li>
-    <button mat-icon-button>
-      <mat-icon>fullscreen</mat-icon>
-    </button>
-    
-  </li>
-  <li>
-<mat-menu #appMenuOne="matMenu">
-  <p>Welcome</p>
-    <button mat-menu-item>       
-        <mat-icon class="small-icon bg-blue">play_arrow</mat-icon>     
-        <a href="" class="notifi-text">
-            Robert S. Taylor commented on Admin<br>
-                <small>1 min ago</small>          
-        </a>     
-    </button>
-    <button mat-menu-item>
-          <mat-icon class="small-icon bg-green">flag</mat-icon>
-          <a href="#" class="notifi-text">
-           New user registered.<br>
-                <small class="text-muted">1 min ago</small>
-         
-        </a>        
-    </button>
-    <button mat-menu-item>
-
-      <mat-icon class="small-icon bg-red">alarm</mat-icon>
-        <a href="#" class="notifi-text">           
-            Carlos Crouch liked
-                <b>Admin</b>
-                <small class="text-muted">1 min ago</small>        
-        </a>
-    </button>
-    <p>View all</p>
-  </mat-menu>
-  
-  <button mat-icon-button [matMenuTriggerFor]="appMenuOne">
-     <mat-icon>notifications</mat-icon>
-  </button>
-
-    
-  </li>
-  <li>
-      <mat-menu #appMenu="matMenu" yPosition="below">
-            
-                <h5 class="text-overflow">
-                    <small>Welcome ! {{ name }}</small>
-                </h5>
-          
-            <button mat-menu-item>
-                  <mat-icon>perm_identity
-                      </mat-icon>
-                  <a href="#" class="notifi-text">
-                  Profile
-                </a>        
-            </button>
-            <button mat-menu-item>
-        
-              <mat-icon>cancel</mat-icon>
-                <a href="#" class="notifi-text">           
-                    Logout
-                </a>
-            </button>
-            <p>View all</p>
-          </mat-menu>
-          
-          <button mat-icon-button [matMenuTriggerFor]="appMenu">
-              <img src="{{ profile?.picture }}" alt="user" class="rounded-circle">
-          </button>
-
-
-
-
-      <!-- <div class="dropdown-menu dropdown-menu-right profile-dropdown " aria-labelledby="Preview"> -->
-          <!-- item-->
-          <!-- <div class="dropdown-item noti-title">
-              <h5 class="text-overflow">
-                  <small>Welcome ! {{ name }}</small>
-              </h5>
-          </div> -->
-
-          <!-- item-->
-          <!-- <a routerlink="/profile" href="javascript:void(0);" class="dropdown-item notify-item">
-              <i class="mdi mdi-account-star-variant"></i>
-              <span>Profile</span>
-          </a> -->
-
-          <!-- item-->
-          <!-- <a href="javascript:void(0);" class="dropdown-item notify-item">
-              <i class="mdi mdi-settings"></i>
-              <span>Settings</span>
-          </a> -->
-
-          <!-- item-->
-          <!-- <a href="javascript:void(0);" class="dropdown-item notify-item">
-              <i class="mdi mdi-lock-open"></i>
-              <span>Lock Screen</span>
-          </a> -->
-
-          <!-- item-->
-          <!-- <a href="javascript:void(0);" class="dropdown-item notify-item" (click)="logout()">
-              <i class="mdi mdi-logout"></i>
-              <span>Logout</span>
-          </a>
-
-      </div>-->
-  </li>
-</ul>
-
-
-      <app-top-navbar></app-top-navbar>
-    </mat-toolbar>
-    <!-- router------------------------------------ -->
-
-    <div>
-      <router-outlet></router-outlet>
-
+<!-- <mat-toolbar class="brand-name" color="primary">
+    <h1 class="app-name">COMOBA</h1>
+</mat-toolbar> -->
+<div>
+<mat-toolbar color="primary" class="toolbar">
+    <div class="app-name">
+        <h1 fxHide fxShow.gt-sm>COMOBA</h1>
+        <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
     </div>
-  </mat-sidenav-content>
+        
+        <!--notifications   -->
+        <ul class="notification-list">
+            <li>
+                <button mat-icon-button>
+                    <mat-icon>fullscreen</mat-icon>
+                </button>
+            </li>
+            <li>
+                <mat-menu #appMenuOne="matMenu">
+                    <p>Welcome</p>
+                    <button mat-menu-item>
+                        <mat-icon class="small-icon bg-blue">play_arrow</mat-icon>
+                        <a href="" class="notifi-text">
+                            Robert S. Taylor commented on Admin
+                            <br>
+                            <small>1 min ago</small>
+                        </a>
+                    </button>
+                    <button mat-menu-item>
+                        <mat-icon class="small-icon bg-green">flag</mat-icon>
+                        <a href="#" class="notifi-text">
+                            New user registered.
+                            <br>
+                            <small class="text-muted">1 min ago</small>
+                        </a>
+                    </button>
+                    <button mat-menu-item>
+                        <mat-icon class="small-icon bg-red">alarm</mat-icon>
+                        <a href="#" class="notifi-text">
+                            Carlos Crouch liked
+                            <b>Admin</b>
+                            <small class="text-muted">1 min ago</small>
+                        </a>
+                    </button>
+                    <p>View all</p>
+                </mat-menu>
+
+                <button mat-icon-button [matMenuTriggerFor]="appMenuOne">
+                    <mat-icon>notifications</mat-icon>
+                </button>
+
+
+            </li>
+            <li>
+                <mat-menu #appMenu="matMenu" yPosition="below">
+
+                    <h5 class="text-overflow">
+                        <small>Welcome ! {{ name }}</small>
+                    </h5>
+
+                    <button mat-menu-item>
+                        <mat-icon>perm_identity
+                        </mat-icon>
+                        <a href="#" class="notifi-text">
+                            Profile
+                        </a>
+                    </button>
+                    <button mat-menu-item>
+
+                        <mat-icon>cancel</mat-icon>
+                        <a href="#" class="notifi-text">
+                            Logout
+                        </a>
+                    </button>
+                    <p>View all</p>
+                </mat-menu>
+
+                <button mat-icon-button [matMenuTriggerFor]="appMenu">
+                    <img src="{{ profile?.picture }}" alt="user" class="rounded-circle">
+                </button>
+            </li>
+        </ul>
+    </mat-toolbar>
+<mat-sidenav-container class="container-fluid">
+    <mat-sidenav #sidenav opened="true" [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+        fixedTopGap="56">
+        <nav>
+            <app-sidebar></app-sidebar>
+        </nav>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <!-- router ------------------------------------ -->
+        <div>
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
 </mat-sidenav-container>
+</div>

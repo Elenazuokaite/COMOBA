@@ -8,6 +8,9 @@ import { HttpModule } from '@angular/http';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import {MediaMatcher} from '@angular/cdk/layout';
+
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule, MatProgressBarModule, MatListModule, MatMenuModule, MatIconModule, MatSidenavModule, MatToolbarModule, MatGridListModule, MatCardModule, MatTableModule, MatExpansionModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, MatSelectModule, MatSliderModule, MatSortModule, MatPaginatorModule } from '@angular/material';
@@ -124,10 +127,12 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     MatSliderModule,
     MatSortModule,
     MatPaginatorModule,
-    DropzoneModule
+    DropzoneModule,
+    FlexLayoutModule
   ],
   providers: [ AppService, AuthService,
     AuthGuardService, UserService, CampaignsService, WalletService,
+    MediaMatcher,
     {
       provide: AuthHttp,
       useFactory: authHttpServiceFactory,

@@ -23,7 +23,7 @@
     <h4>Top up account</h4>
     <form [formGroup]="form" (ngSubmit)="onSave(f)" #f="ngForm">
       <mat-form-field [formGroup]="form">
-       <input matInput placeholder="Amount to topup" type="text" name="topUp" id="WalletTopUp" formControlName="amount" class="form-control" [(ngModel)]="wallet.amount">
+       <input matInput placeholder="" type="text" name="topUp" id="WalletTopUp" formControlName="amount" class="form-control" [(ngModel)]="wallet.amount">
       </mat-form-field>
       <button mat-raised-button color="primary" type="submit">Top up</button>
     </form>      
@@ -32,33 +32,29 @@
 <div class="charts">
   <div class="chart-lg chart-wallet border-rad">
   <h4>Transaction history</h4>
-  <!-- <mat-table #table [dataSource]="dataSource">
-  
-  
-    <ng-container matColumnDef="date">
-      <mat-header-cell *matHeaderCellDef> # </mat-header-cell>
-      <mat-cell *matCellDef="let element"></mat-cell>
-    </ng-container>
-  
- 
-    <ng-container matColumnDef="status">
-      <mat-header-cell *matHeaderCellDef> Campaign name </mat-header-cell>
-      <mat-cell *matCellDef="let element"></mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="action">
-      <mat-header-cell *matHeaderCellDef> Start Date </mat-header-cell>
-      <mat-cell *matCellDef="let element"></mat-cell>
-    </ng-container>
-  
-    <ng-container matColumnDef="sum">
-      <mat-header-cell *matHeaderCellDef> Due date </mat-header-cell>
-      <mat-cell *matCellDef="let element"></mat-cell>
-    </ng-container>
- 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table> -->
+  <mat-table class="mr-20" #table [dataSource]="dataSource">
+      <ng-container matColumnDef="date">
+          <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.date}} </mat-cell>
+      </ng-container>
+      <!-- Age Definition -->
+      <ng-container matColumnDef="status">
+          <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.status}} </mat-cell>
+      </ng-container>
+      <!-- Title Definition -->
+      <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.action}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="sum">
+          <mat-header-cell *matHeaderCellDef> Sum </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.sum}} </mat-cell>
+      </ng-container>  
+      <!-- Header and Row Declarations -->
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
 </div>
 </div>
 

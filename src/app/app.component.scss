@@ -1,20 +1,37 @@
 mat-sidenav {
     width: 240px;
-    overflow-y: hidden;
+    overflow-y: scroll;
 }
+mat-sidenav-container {
+    min-height: 100vh;
+}
+
 .brand-name {
     margin: 0 auto;
 }
 .app-name {
-    text-align: center;
-    width: 100%;
     color: #fff;
     font-weight: bold;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
 }
 .mat-toolbar.mat-primary {
     background-color: #343c49;
 }
-
+@media screen and (max-width:600px) {
+    .mat-toolbar.mat-primary{
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 999;
+    }
+    .mat-card.page-title {
+        margin-top: 56px;
+    }
+}
 .small-icon-holder {
     background-color: #82c5ff;
     width: 30px;
