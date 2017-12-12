@@ -14,7 +14,7 @@
         <form id="campaignEditMainData" [formGroup]="form" (ngSubmit)="onSave(f)" #f="ngForm">
             <div class="form-fields">
                 <p>Campaign name</p>
-                <mat-form-field  [formGroup]="form">
+                <mat-form-field [formGroup]="form">
                     <input matInput type="text" name="title" id="CampaignName" formControlName="title" class="form-control" [(ngModel)]="campaign.title">
                 </mat-form-field>
                 <div class="datepicker">
@@ -44,7 +44,7 @@
     </div>
 </mat-card>
 <h3>Campaign targets</h3>
-<div class="mr-20">
+<!-- <div class="mr-20">
     <form>
         <mat-form-field>
             <mat-select [(value)]="selected" id="options">
@@ -58,8 +58,74 @@
         <button type="submit" id="addButton" mat-raised-button color="accent">+ Add</button>
     </form>
     <hr>
+</div> -->
+<div class="mr-20">
+    <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    TIME RANGE SELECT
+                </mat-panel-title>
+                <mat-panel-description>
+
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="pd-24">
+                <mat-slider class="full-width" min="0" max="24" step="1" value="0" thumbLabel tickInterval="6"></mat-slider>
+            </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                     DAY OF WEEK
+                </mat-panel-title>
+                <mat-panel-description>
+                   
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="pd-24">
+                <mat-checkbox name="days" value="Monday">Monday</mat-checkbox>
+                <mat-checkbox name="days" value="Tuesday">Tuesday</mat-checkbox>
+                <mat-checkbox name="days" value="Wednesday">Wednesday</mat-checkbox>
+                <mat-checkbox name="days" value="Thursday">Thursday</mat-checkbox>
+                <mat-checkbox name="days" value="Friday">Friday</mat-checkbox>
+                <mat-checkbox name="days" value="Saturday">Saturday</mat-checkbox>
+                <mat-checkbox name="days" value="Sunday">Sunday</mat-checkbox>
+            </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                     MAP POINTER SELECTION
+                </mat-panel-title>
+                <mat-panel-description>
+        
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+        <div class="pd-24">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d147553.95406611357!2d25.112849473261914!3d54.70028863963787!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46dd93fb5c6408f5%3A0x400d18c70e9dc40!2sVilnius!5e0!3m2!1slt!2slt!4v1511969916645"
+                width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                     INVENTORY GROUP
+                </mat-panel-title>
+                <mat-panel-description>
+        
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="pd-24">
+                <mat-checkbox name="group" value="Taxi">Taxi</mat-checkbox>
+                <mat-checkbox name="group" value="Shopping malls">Shopping malls</mat-checkbox>
+                <mat-checkbox name="group" value="Post offices">Post offices</mat-checkbox>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+    <hr>
 </div>
-<mat-card class="mr-20 time-range">
+<!-- <mat-card class="mr-20 time-range">
     <mat-toolbar>
         <mat-toolbar-row>
             <span>TIME RANGE SELECT</span>
@@ -77,8 +143,8 @@
         <mat-slider min="0" max="24" step="1" value="0" thumbLabel tickInterval="6"></mat-slider>
     </div>
 
-</mat-card>
-<mat-card class="mr-20 time-range">
+</mat-card> -->
+<!-- <mat-card class="mr-20 time-range">
     <mat-toolbar>
         <mat-toolbar-row>
             <span>DAY OF WEEK</span>
@@ -101,8 +167,8 @@
         <mat-checkbox name="days" value="Sunday">Sunday</mat-checkbox>
     </div>
 
-</mat-card>
-<mat-card class="mr-20 time-range">
+</mat-card> -->
+<!-- <mat-card class="mr-20 time-range">
     <mat-toolbar>
         <mat-toolbar-row>
             <span>MAP POINTER SELECTION</span>
@@ -119,8 +185,8 @@
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d147553.95406611357!2d25.112849473261914!3d54.70028863963787!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46dd93fb5c6408f5%3A0x400d18c70e9dc40!2sVilnius!5e0!3m2!1slt!2slt!4v1511969916645"
             width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
     </div>
-</mat-card>
-<mat-card class="mr-20 time-range">
+</mat-card> -->
+<!-- <mat-card class="mr-20 time-range">
     <mat-toolbar>
         <mat-toolbar-row>
             <span>INVENTORY GROUP</span>
@@ -139,10 +205,9 @@
         <mat-checkbox name="group" value="Post offices">Post offices</mat-checkbox>
     </div>
 
-</mat-card>
+</mat-card> -->
+<h3>Campaign budget</h3>
 <div class="mr-20">
-    <hr>
-    <h4>Campaign budget</h4>
     <form>
         <div>
             <mat-form-field class="budget-input" [formGroup]="form">
