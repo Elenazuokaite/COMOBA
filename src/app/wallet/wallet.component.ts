@@ -12,10 +12,10 @@ import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
   styleUrls: ['./wallet.component.scss']
 })
 export class WalletComponent implements OnInit {
-  displayedColumns = ['date', 'status', 'action', 'sum'];
+  displayedColumns = ['createdAt', 'status', 'type', 'amount'];
   dataSource = new MatTableDataSource();
   form: FormGroup;
-  
+
     profile: any;
 
     transaction: Transaction = new Transaction();
@@ -32,13 +32,14 @@ export class WalletComponent implements OnInit {
 
      ngOnInit() {
       this.walletService.getTopUp().subscribe(
-        wallet => { this.wallet = wallet; }        
-      ); 
+        wallet => { this.wallet = wallet; }
+      );
+
       this.walletService.getTransaction().subscribe(
         transaction => { this.transaction = transaction; this.dataSource = new MatTableDataSource(transaction);
           console.log(transaction);
-        }        
-      ); 
+        }
+      );
 
      }
 
@@ -46,7 +47,7 @@ export class WalletComponent implements OnInit {
       let wallet = this.form.value;
       let result;
       this.walletService.addTopUp(wallet).subscribe(
-        result => { console.log(result) }
+        result => { console.log(result); }
       );
       console.log(result);
     }

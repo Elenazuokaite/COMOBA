@@ -33,9 +33,9 @@
   <div class="chart-lg chart-wallet border-rad">
   <h4>Transaction history</h4>
   <mat-table class="mr-20" #table [dataSource]="dataSource">
-      <ng-container matColumnDef="date">
+      <ng-container matColumnDef="createdAt">
           <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
-          <mat-cell *matCellDef="let row"> {{row.date}} </mat-cell>
+          <mat-cell *matCellDef="let row"> {{row.createdAt.replace('T', ' ').slice(0, 19)}} </mat-cell>
       </ng-container>
       <!-- Age Definition -->
       <ng-container matColumnDef="status">
@@ -43,13 +43,13 @@
           <mat-cell *matCellDef="let row"> {{row.status}} </mat-cell>
       </ng-container>
       <!-- Title Definition -->
-      <ng-container matColumnDef="action">
+      <ng-container matColumnDef="type">
           <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
-          <mat-cell *matCellDef="let row"> {{row.action}} </mat-cell>
+          <mat-cell *matCellDef="let row"> {{row.type}} </mat-cell>
       </ng-container>
-      <ng-container matColumnDef="sum">
+      <ng-container matColumnDef="amount">
           <mat-header-cell *matHeaderCellDef> Sum </mat-header-cell>
-          <mat-cell *matCellDef="let row"> {{row.sum}} </mat-cell>
+          <mat-cell *matCellDef="let row"> {{row.amount}} </mat-cell>
       </ng-container>  
       <!-- Header and Row Declarations -->
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

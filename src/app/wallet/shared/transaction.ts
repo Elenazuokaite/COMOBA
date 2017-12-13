@@ -1,6 +1,6 @@
-export class Transaction{
-    sum: number;
-    action: string;
+export class Transaction {
+    amount: number;
+    type: string;
     status: string;
-    date: string;
+    createdAt: string;
   }

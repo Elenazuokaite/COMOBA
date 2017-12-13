@@ -8,7 +8,7 @@ import { AuthHttp } from 'angular2-jwt';
 import { GlobalVariable } from '../../config';
 
 @Injectable()
-export class WalletService{
+export class WalletService {
 
     baseApiUrl = GlobalVariable.BACK_END_URL;
     constructor(private http: Http, private auth: AuthService, private authHttp: AuthHttp) {}
@@ -25,7 +25,7 @@ export class WalletService{
           }
           getTransaction(): Observable<any> {
             const token = this.auth.getToken();
-            return this.authHttp.get(this.baseApiUrl + '/user/wallet/transaction')
+            return this.authHttp.get(this.baseApiUrl + '/user/wallet/transactions')
                 .map(
                     (response: Response) => {
                         return response.json();
