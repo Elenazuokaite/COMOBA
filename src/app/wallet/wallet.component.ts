@@ -47,9 +47,9 @@ export class WalletComponent implements OnInit {
       let wallet = this.form.value;
       let result;
       this.walletService.addTopUp(wallet).subscribe(
-        result => { console.log(result); }
+        result => { console.log(result);
+        window.location.href = '' + result.url }
       );
-      console.log(result);
     }
     // ngOnInit() {
     //   this.campaignsService.createCampaign().subscribe(

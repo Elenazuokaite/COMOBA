@@ -51,7 +51,7 @@ import { DropzoneModule } from 'ngx-dropzone-wrapper';
 import { DROPZONE_CONFIG } from 'ngx-dropzone-wrapper';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 // import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-
+import { NouisliderModule } from 'ng2-nouislider';
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
     tokenGetter: (() => localStorage.getItem('access_token'))
@@ -128,7 +128,8 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     MatSortModule,
     MatPaginatorModule,
     DropzoneModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    NouisliderModule
   ],
   providers: [ AppService, AuthService,
     AuthGuardService, UserService, CampaignsService, WalletService,
