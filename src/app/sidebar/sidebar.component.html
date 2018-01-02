@@ -73,7 +73,7 @@
 
 <ul class="sidebar">
     <li>
-        <p>Main</p>
+        <p translate>Main</p>
     </li>
     <!-- <li>
       <button mat-button [matMenuTriggerFor]="menu" yPosition="above">Dashboard</button>
@@ -83,7 +83,7 @@
       </mat-menu>
     </li> -->
     <li>
-            <a routerLink="/"><mat-icon>home</mat-icon>Dashboard</a>
+            <a routerLink="/" translate><mat-icon>home</mat-icon>Dashboard</a>
         
     </li>
     <li class="li-colapse">
@@ -92,66 +92,66 @@
             <mat-expansion-panel style="box-shadow:none;">
                 <mat-expansion-panel-header>
               
-                    <mat-panel-description>
+                    <mat-panel-description translate>
                      <mat-icon>movie</mat-icon>Campaigns
                     </mat-panel-description>
                 </mat-expansion-panel-header>
                 <ul>
                     <li>
-                        <a routerLink="add-campaigns">+ Add campaign</a>
+                        <a routerLink="add-campaigns">+ <span translate>Add campaign</span></a>
                     </li>
                     <li>
-                        <a routerLink="/campaigns/list/pending">Pending</a>
+                        <a routerLink="/campaigns/list/pending" translate>Pending</a>
                     </li>
                     <li>
-                        <a routerLink="/campaigns/list/moderation">In moderation</a>
+                        <a routerLink="/campaigns/list/moderation" translate>In moderation</a>
                     </li>
                     <li>
-                        <a routerLink="/campaigns/list/active">Active</a>
+                        <a routerLink="/campaigns/list/active" translate>Active</a>
                     </li>
                     <li>
-                        <a routerLink="/campaigns/list/finished">Finished</a>
+                        <a routerLink="/campaigns/list/finished" translate>Finished</a>
                     </li>
                     <li>
-                        <a routerLink="/campaigns/list/archived">Archived</a>
+                        <a routerLink="/campaigns/list/archived" translate>Archived</a>
                     </li>
                 </ul>
             </mat-expansion-panel>
             <mat-expansion-panel style="box-shadow:none;">
                 <mat-expansion-panel-header>
               
-                    <mat-panel-description>
+                    <mat-panel-description translate>
                      <mat-icon>show_chart</mat-icon>Statistics
                     </mat-panel-description>
                 </mat-expansion-panel-header>
                 <ul>
                     <li>
-                        <a href="#">Charts</a>
+                        <a href="#" translate>Charts</a>
                     </li>
                     <li>
-                        <a href="#">Mapped</a>
+                        <a href="#" translate>Mapped</a>
                     </li>
                 </ul>
             </mat-expansion-panel>
         </mat-accordion>       
     </li> 
     <li>
-        <a routerLink="/profile">
+        <a routerLink="/profile" translate>
             <mat-icon>perm_identity</mat-icon>User profile</a>
     </li>
     <li>
-        <a routerLink="/wallet">
+        <a routerLink="/wallet" translate>
             <mat-icon>account_balance_wallet</mat-icon>Wallet</a>
     </li>
     <li>
-        <p>Admin</p>
+        <p translate>Admin</p>
     </li>
     <li>
-        <a href="#">
+        <a href="#" translate>
             <mat-icon>format_list_bulleted</mat-icon>Export campaigns</a>
     </li>
     <li>
-        <a routerLink="/profile">
+        <a routerLink="/profile" translate>
             <mat-icon>group</mat-icon>User management</a>
     </li>
 </ul>

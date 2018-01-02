@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/filter';
 import * as auth0 from 'auth0-js';
+import { Observable, Observer } from 'rxjs';
 
 @Injectable()
 export class AuthService {
@@ -14,29 +15,34 @@ export class AuthService {
     redirectUri: 'http://localhost:4200/dashboard',
     scope: 'openid profile email selfservice'
   });
+
+  private observer: Observer<string>;
+  profileChange: Observable<string> = new Observable(obs => this.observer = obs);
+
   constructor(public router: Router) {}
 
   public login(): void {
     this.auth0.authorize();
   }
 
-  public handleAuthentication(): void {
-    this.auth0.parseHash((err, authResult) => {
-      if (authResult && authResult.accessToken && authResult.idToken) {
-        window.location.hash = '';
-        this.setSession(authResult);
-        this.router.navigate(['/']);
-      } else if (err) {
+public handleAuthentication(): void {
+  this.auth0.parseHash((err, authResult) => {
+    if (authResult && authResult.accessToken && authResult.idToken) {
+      window.location.hash = '';
+      this.setSession(authResult);
+      this.getProfile();
+      this.router.navigate(['/']);
+    } else if (err) {
 
-        localStorage.removeItem('access_token');
-        localStorage.removeItem('id_token');
-        localStorage.removeItem('expires_at');
+      localStorage.removeItem('access_token');
+      localStorage.removeItem('id_token');
+      localStorage.removeItem('expires_at');
 
-        this.router.navigate(['/auth']);
-        console.log(err);
-      }
-    });
-  }
+      this.router.navigate(['/auth']);
+      console.log(err);
+    }
+  });
+}
 
   private setSession(authResult): void {
     // Set the time that the access token will expire at
@@ -69,19 +75,16 @@ export class AuthService {
   userProfile: any;
   
   //...
-  public getProfile(cb): void {
+  public getProfile() {
     const accessToken = localStorage.getItem('access_token');
     if (!accessToken) {
-      throw new Error('Access token must exist to fetch profile');
+      return false;
     }
-  
     const self = this;
     this.auth0.client.userInfo(accessToken, (err, profile) => {
-      if (profile) {
-        self.userProfile = profile;
+    if (profile) {
+        this.observer.next(profile);
       }
-      cb(err, profile);
     });
   }
-
 }

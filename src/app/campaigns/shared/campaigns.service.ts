@@ -78,14 +78,25 @@ getCampaigns(status: string): Observable<any> {
       );
     }
 
+    //istrinti paveiksleli
+    removeImage(fileName:string, id:number){
+      return this.authHttp.delete(this.baseApiUrl + '/asset/upload/'+id+'/'+fileName,
+      {headers: new Headers({'X-Requested-With': 'XMLHttpRequest'})}
+      ).map(
+        (response: Response) => {
+          return response.json();
+        }
+      );
+    }
+
 
       updateCampaignDetails(campaign: any, id: number) {
-        let formData: FormData = new FormData();
+        var formData: FormData = new FormData();
         formData.append('title', campaign.title);
 
-        formData.append('datefrom', campaign.datefrom.year + '-' + campaign.datefrom.month + '-' + campaign.datefrom.day);
+        formData.append('datefrom', campaign.datefrom);
 
-        formData.append('dateto', campaign.dateto.year + '-' + campaign.dateto.month + '-' + campaign.dateto.day);
+        formData.append('dateto', campaign.dateto);
 
         return this.authHttp.post(this.baseApiUrl + '/campaign/edit/' + id,
         formData, { headers: new Headers({'X-Requested-With': 'XMLHttpRequest'})}, ).map(

@@ -67,3 +67,18 @@ mat-icon.small-icon {
     list-style: none;
     justify-content: flex-end;
 }
+.lang-select {
+    width: 120px;
+    .mat-select-value  {
+        color: rgba(225, 225, 225, 1);
+    }
+    .mat-select-arrow {
+        color: rgba(225, 225, 225, 1);
+    }
+    // text-align: right;
+    // float: right;
+}
+.rounded-circle {
+    width: 30px; 
+    border-radius: 30px;
+}

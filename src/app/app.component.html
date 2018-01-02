@@ -8,16 +8,22 @@
     <h1 class="app-name">COMOBA</h1>
 </mat-toolbar> -->
 <div>
-<mat-toolbar color="primary" class="toolbar">
-    <div class="app-name">
-        <h1 fxHide fxShow.gt-sm>COMOBA</h1>
-        <button mat-icon-button (click)="sidenav.toggle()">
-            <mat-icon>menu</mat-icon>
-        </button>
-    </div>
-        
+    <mat-toolbar color="primary" class="toolbar">
+        <div class="app-name">
+            <h1 fxHide fxShow.gt-sm>COMOBA</h1>
+            <button mat-icon-button (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </div>
+
         <!--notifications   -->
         <ul class="notification-list">
+            <li>
+                <mat-select class="lang-select" (change)="langChange($event.value)" [(value)]="selected">
+                    <mat-option value="en">English</mat-option>
+                    <mat-option value="lt">Lietuvių</mat-option>
+                </mat-select>
+            </li>
             <li>
                 <button mat-icon-button>
                     <mat-icon>fullscreen</mat-icon>
@@ -25,32 +31,32 @@
             </li>
             <li>
                 <mat-menu #appMenuOne="matMenu">
-                    <p>Welcome</p>
+                    <p translate>Welcome</p>
                     <button mat-menu-item>
                         <mat-icon class="small-icon bg-blue">play_arrow</mat-icon>
-                        <a href="" class="notifi-text">
+                        <a href="" class="notifi-text" translate>
                             Robert S. Taylor commented on Admin
                             <br>
-                            <small>1 min ago</small>
+                            <small translate>1 min ago</small>
                         </a>
                     </button>
                     <button mat-menu-item>
                         <mat-icon class="small-icon bg-green">flag</mat-icon>
-                        <a href="#" class="notifi-text">
+                        <a href="#" class="notifi-text" translate>
                             New user registered.
                             <br>
-                            <small class="text-muted">1 min ago</small>
+                            <small class="text-muted" translate>1 min ago</small>
                         </a>
                     </button>
                     <button mat-menu-item>
                         <mat-icon class="small-icon bg-red">alarm</mat-icon>
-                        <a href="#" class="notifi-text">
+                        <a href="#" class="notifi-text" translate>
                             Carlos Crouch liked
-                            <b>Admin</b>
-                            <small class="text-muted">1 min ago</small>
+                            <b translate>Admin</b>
+                            <small class="text-muted" translate>1 min ago</small>
                         </a>
                     </button>
-                    <p>View all</p>
+                    <p translate>View all</p>
                 </mat-menu>
 
                 <button mat-icon-button [matMenuTriggerFor]="appMenuOne">
@@ -63,24 +69,24 @@
                 <mat-menu #appMenu="matMenu" yPosition="below">
 
                     <h5 class="text-overflow">
-                        <small>Welcome ! {{ name }}</small>
+                        <small translate>Welcome ! {{ name }}</small>
                     </h5>
 
                     <button mat-menu-item>
                         <mat-icon>perm_identity
                         </mat-icon>
-                        <a href="#" class="notifi-text">
+                        <a href="#" class="notifi-text" translate>
                             Profile
                         </a>
                     </button>
                     <button mat-menu-item>
 
                         <mat-icon>cancel</mat-icon>
-                        <a href="#" class="notifi-text">
+                        <a href="#" class="notifi-text" translate>
                             Logout
                         </a>
                     </button>
-                    <p>View all</p>
+                    <p translate>View all</p>
                 </mat-menu>
 
                 <button mat-icon-button [matMenuTriggerFor]="appMenu">
@@ -89,18 +95,18 @@
             </li>
         </ul>
     </mat-toolbar>
-<mat-sidenav-container class="container-fluid">
-    <mat-sidenav #sidenav opened="true" [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
-        fixedTopGap="56">
-        <nav>
-            <app-sidebar></app-sidebar>
-        </nav>
-    </mat-sidenav>
-    <mat-sidenav-content>
-        <!-- router ------------------------------------ -->
-        <div>
-            <router-outlet></router-outlet>
-        </div>
-    </mat-sidenav-content>
-</mat-sidenav-container>
+    <mat-sidenav-container class="container-fluid">
+        <mat-sidenav #sidenav opened="true" [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+            fixedTopGap="56">
+            <nav>
+                <app-sidebar></app-sidebar>
+            </nav>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <!-- router ------------------------------------ -->
+            <div>
+                <router-outlet></router-outlet>
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
 </div>

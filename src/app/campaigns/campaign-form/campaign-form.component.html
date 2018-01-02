@@ -1,11 +1,11 @@
 <mat-card class="page-title">
-    <h4>Pending campaigns</h4>
+    <h4 translate>Add campaign</h4>
     <div>
         <p>
-            <a href="/">COMOBA</a> / Campaigns / Add campaign</p>
+            <a href="/">COMOBA</a> / <span translate>Campaigns</span> / <span translate>Add campaign</span></p>
     </div>
 </mat-card>
-<h3>Campaign info</h3>
+<h3 translate>Campaign info</h3>
 <mat-card class="campaign-add">
     <div class="campaign-add-form">
         <!-- <div [formGroup]="myGroup">
@@ -13,37 +13,43 @@
         </div> -->
         <form id="campaignEditMainData" [formGroup]="form" (ngSubmit)="onSave(f)" #f="ngForm">
             <div class="form-fields">
-                <p>Campaign name</p>
+                <p translate>Campaign name</p>
                 <mat-form-field [formGroup]="form">
                     <input matInput type="text" name="title" id="CampaignName" formControlName="title" class="form-control" [(ngModel)]="campaign.title">
                 </mat-form-field>
                 <div class="datepicker">
-                    <p>Date Range</p>
+                    <p translate>Date Range</p>
                     <mat-form-field [formGroup]="form">
-                        <input [min]="minDate" [max]="maxDate" [(ngModel)]="campaign.datefrom" formControlName="datefrom" matInput [matDatepicker]="picker1" [matDatepickerFilter]="myFilter" placeholder="From" [formControl]="date">
+                        <input [min]="minDate" [max]="maxDate" [(ngModel)]="campaign.datefrom" formControlName="datefrom" matInput [matDatepicker]="picker1" [matDatepickerFilter]="myFilter" placeholder="{{'From'|translate}}" [formControl]="date">
                         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                         <mat-datepicker #picker1></mat-datepicker>
                     </mat-form-field>
                     <mat-form-field [formGroup]="form">
-                        <input [min]="date.value" [max]="maxDate" [(ngModel)]="campaign.dateto" formControlName="dateto" matInput [matDatepicker]="picker2" [matDatepickerFilter]="myFilter" placeholder="To" [value]="date.value">
+                        <input [min]="date.value" [max]="maxDate" [(ngModel)]="campaign.dateto" formControlName="dateto" matInput [matDatepicker]="picker2" [matDatepickerFilter]="myFilter" placeholder="{{'To'|translate}}" [value]="date.value">
                         <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                         <mat-datepicker #picker2></mat-datepicker>
                     </mat-form-field>
                 </div>
             </div>
-            <button mat-raised-button color="warn" type="submit">Update</button>
+            <button mat-raised-button color="warn" type="submit"><span translate>Update</span></button>
         </form>
     </div>
     <div class="dropzone-field">
         <form>
             <div>
-                <p>Asets</p>
-                <div class="dropzone" [dropzone]="config" (error)="onUploadError($event)" (success)="onUploadSuccess($event)"></div>
+                <p translate>Assets</p>
+                <image-upload partName="file" [headers]="myHeaders" [uploadedFiles]="images"
+                (removed)="onRemoved($event)"
+                buttonCaption="Drop files here to upload"
+                (uploadFinished)="onUploadFinished($event)"
+                [url]="imageUploadUrl">
+              </image-upload>
+                <!-- <div class="dropzone" [dropzone]="config" (error)="onUploadError($event)" (success)="onUploadSuccess($event)"></div> -->
             </div>
         </form>
     </div>
 </mat-card>
-<h3>Campaign targets</h3>
+<h3 translate>Campaign targets</h3>
 <!-- <div class="mr-20">
     <form>
         <mat-form-field>
@@ -63,7 +69,7 @@
     <mat-accordion>
         <mat-expansion-panel>
             <mat-expansion-panel-header>
-                <mat-panel-title>
+                <mat-panel-title translate>
                     TIME RANGE SELECT
                 </mat-panel-title>
                 <mat-panel-description>
@@ -79,7 +85,7 @@
         </mat-expansion-panel>
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
             <mat-expansion-panel-header>
-                <mat-panel-title>
+                <mat-panel-title translate>
                      DAY OF WEEK
                 </mat-panel-title>
                 <mat-panel-description>
@@ -87,18 +93,18 @@
                 </mat-panel-description>
             </mat-expansion-panel-header>
             <div>
-                <mat-checkbox name="days" value="Monday">Monday</mat-checkbox>
-                <mat-checkbox name="days" value="Tuesday">Tuesday</mat-checkbox>
-                <mat-checkbox name="days" value="Wednesday">Wednesday</mat-checkbox>
-                <mat-checkbox name="days" value="Thursday">Thursday</mat-checkbox>
-                <mat-checkbox name="days" value="Friday">Friday</mat-checkbox>
-                <mat-checkbox name="days" value="Saturday">Saturday</mat-checkbox>
-                <mat-checkbox name="days" value="Sunday">Sunday</mat-checkbox>
+                <mat-checkbox name="days" value="Monday"><span translate>Monday</span></mat-checkbox>
+                <mat-checkbox name="days" value="Tuesday"><span translate>Tuesday</span></mat-checkbox>
+                <mat-checkbox name="days" value="Wednesday"><span translate>Wednesday</span></mat-checkbox>
+                <mat-checkbox name="days" value="Thursday"><span translate>Thursday</span></mat-checkbox>
+                <mat-checkbox name="days" value="Friday"><span translate>Friday</span></mat-checkbox>
+                <mat-checkbox name="days" value="Sunday"><span translate>Sunday</span></mat-checkbox>
+                <mat-checkbox name="days" value="Saturday"><span translate>Saturday</span></mat-checkbox>
             </div>
         </mat-expansion-panel>
         <mat-expansion-panel>
             <mat-expansion-panel-header>
-                <mat-panel-title>
+                <mat-panel-title translate>
                      MAP POINTER SELECTION
                 </mat-panel-title>
                 <mat-panel-description>
@@ -112,7 +118,7 @@
         </mat-expansion-panel>
         <mat-expansion-panel>
             <mat-expansion-panel-header>
-                <mat-panel-title>
+                <mat-panel-title translate>
                      INVENTORY GROUP
                 </mat-panel-title>
                 <mat-panel-description>
@@ -120,9 +126,9 @@
                 </mat-panel-description>
             </mat-expansion-panel-header>
             <div>
-                <mat-checkbox name="group" value="Taxi">Taxi</mat-checkbox>
-                <mat-checkbox name="group" value="Shopping malls">Shopping malls</mat-checkbox>
-                <mat-checkbox name="group" value="Post offices">Post offices</mat-checkbox>
+                <mat-checkbox name="group" value="Taxi"><span translate>Taxi</span></mat-checkbox>
+                <mat-checkbox name="group" value="Shopping malls"><span translate>Shopping malls</span></mat-checkbox>
+                <mat-checkbox name="group" value="Post offices"><span translate>Post offices</span></mat-checkbox>
             </div>
         </mat-expansion-panel>
     </mat-accordion>
@@ -209,15 +215,16 @@
     </div>
 
 </mat-card> -->
-<h3>Campaign budget</h3>
+<h3 translate>Campaign budget</h3>
 <div class="mr-20">
     <form>
         <div>
             <mat-form-field class="budget-input" [formGroup]="form">
-                <input matInput placeholder="Enter max campaign budget [0 - 1190]" type="text" name="budget" id="campaignBudget" formControlName="budget"
+                <input matInput placeholder="{{'Enter max campaign budget [0 - 1190]'|translate}}" type="text" name="budget" id="campaignBudget" formControlName="budget"
                     class="form-control" [(ngModel)]="campaign.budget">
             </mat-form-field>
         </div>
-        <button class="moderation-btn" mat-raised-button (click)="sendModeration(campaign)" type="submit" id="campaignEditBtnModeration">Send for moderation</button>
+        <button class="moderation-btn" mat-raised-button (click)="sendModeration(campaign)" type="submit" id="campaignEditBtnModeration"><span translate>Send for moderation</span></button>
+        <button class="moderation-btn" mat-raised-button (click)="sendModeration(campaign)" type="submit" id="campaignEditBtnModeration"><span translate>Stop campaign</span></button>
     </form>
 </div>

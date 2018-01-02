@@ -69,7 +69,11 @@ export class CampaignsComponent implements OnInit {
                           alert('Could not delete campaign.');
                           this.campaigns.splice(index, 0, campaign);
                       });
+              this.dataSource = new MatTableDataSource(this.campaigns);
+              this.dataSource.sort = this.sort;
+              this.dataSource.paginator = this.paginator;      
           }
+          
       }
 }
 

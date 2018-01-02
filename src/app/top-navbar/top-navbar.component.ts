@@ -12,20 +12,11 @@ export class TopNavbarComponent implements OnInit {
     constructor(public auth: AuthService) { }
 
     ngOnInit() {
-      if (this.auth.userProfile) {
-        this.profile = this.auth.userProfile;
-      } else {
-        this.auth.getProfile((err, profile) => {
-          this.profile = profile;
-
-          if (this.profile.given_name) {
-                  this.name = this.profile.given_name;
-                } else {
-                  this.name = this.profile.nickname;
-                }
-
-                  });
+      var data =  this.auth.profileChange.subscribe(profile => this.profile = profile);
+      if(data){
+        this.auth.getProfile();
       }
+      
     }
     logout() {
           this.auth.logout();

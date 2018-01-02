@@ -50,12 +50,25 @@ import { WalletComponent } from './wallet/wallet.component';
 import { DropzoneModule } from 'ngx-dropzone-wrapper';
 import { DROPZONE_CONFIG } from 'ngx-dropzone-wrapper';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
+
+import { ImageUploadModule } from "angular2-image-upload";
+//translate
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+//date pipe
+import { DatePipe } from '@angular/common';
 // import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { NouisliderModule } from 'ng2-nouislider';
+
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
     tokenGetter: (() => localStorage.getItem('access_token'))
   }), http, options);
+}
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
 }
 // datos formatas
 // export const MY_NATIVE_DATE_FORMATS = {
@@ -129,7 +142,16 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     MatPaginatorModule,
     DropzoneModule,
     FlexLayoutModule,
-    NouisliderModule
+    NouisliderModule,
+    ImageUploadModule.forRoot(),
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [ AppService, AuthService,
     AuthGuardService, UserService, CampaignsService, WalletService,

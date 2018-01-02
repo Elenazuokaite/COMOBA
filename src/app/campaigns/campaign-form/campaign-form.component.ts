@@ -6,10 +6,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {FormBuilder, FormGroup, Validators, FormsModule, FormControl} from '@angular/forms';
 import { NouisliderModule } from 'ng2-nouislider';
 import { GlobalVariable } from '../../config';
+import { DatePipe } from '@angular/common';
+import { ViewEncapsulation, ViewChild, Directive, Pipe, PipeTransform } from '@angular/core';
+
 @Component({
   selector: 'app-campaign-form',
   templateUrl: './campaign-form.component.html',
-  styleUrls: ['./campaign-form.component.scss']
+  styleUrls: ['./campaign-form.component.scss'],
+  providers: [DatePipe],
 })
 export class CampaignFormComponent implements OnInit {
 
@@ -35,6 +39,14 @@ someRange: number|number[] =  [6,22];
   campaign: Campaign = new Campaign();
   media: Media = new Media();
   baseApiUrl = GlobalVariable.BACK_END_URL;
+
+  imageUploadUrl:string;
+  myHeaders: { [name: string]: any } = {
+    'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+  };
+
+  images = [];
+
   date = new FormControl(new Date());
   serializedDate = new FormControl((new Date()).toISOString());
   minDate = new Date();
@@ -56,7 +68,8 @@ someRange: number|number[] =  [6,22];
   constructor( private router: Router,
      private activatedRoute: ActivatedRoute,
      private campaignsService: CampaignsService,
-     private formBuilder: FormBuilder, ) {
+     private formBuilder: FormBuilder,
+     private datePipe: DatePipe, ) {
       this.form = formBuilder.group ({
         title: [''],
         dateto: [''],
@@ -77,7 +90,7 @@ someRange: number|number[] =  [6,22];
       this.campaignsService.getCampaign(id).subscribe(
           campaign => {
               this.campaign = campaign;
-              this.config.url = this.baseApiUrl + '/asset/upload/' + campaign.id;
+              this.imageUploadUrl = this.baseApiUrl + '/asset/upload/' + campaign.id;
           },
           response => {
               if (response.status === 404) {
@@ -88,6 +101,11 @@ someRange: number|number[] =  [6,22];
       this.campaignsService.getMedia(id).subscribe(
         media => {
             this.media = media;
+            this.images = [];
+            for (var i = 0; i < media.length; i++) {
+              this.images.push({fileName: media[i].filename,
+                url:  this.baseApiUrl+'/uploads/campaigns/'+media[i].campaignid+'/' + media[i].filename});
+              }
             // console.log(media.filename);
         },
         response => {
@@ -97,12 +115,23 @@ someRange: number|number[] =  [6,22];
   });
 
   }
+  onUploadFinished(file: any) {
+    alert('uploaded!');
+  }
+  onRemoved(filename){
+    this.campaignsService.removeImage(filename.file.name, this.campaign.id).subscribe(
+      result => { return true }
+   );
+  }
 
   onSave() {
     let user = this.form.value;
     let result;
     let campaign = this.form.value;
     let id = this.campaign.id;
+    campaign.datefrom = this.datePipe.transform(campaign.datefrom, 'yyyy-MM-dd');
+    campaign.dateto = this.datePipe.transform(campaign.dateto, 'yyyy-MM-dd');
+    console.log(campaign);
     this.campaignsService.updateCampaignDetails(campaign, id).subscribe(
       result => { this.router.navigate(['/campaigns/view/', this.campaign.id]); }
     );

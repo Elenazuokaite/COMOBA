@@ -1,13 +1,12 @@
 <mat-card class="page-title">
-    <h4>{{title}}</h4>
+    <h4 translate>{{title}}</h4>
     <div>
-        <p>
-            <a href="/">COMOBA</a> / {{title}}</p>
+        <p><a href="/">COMOBA</a> / <span translate>{{title}}</span></p>
     </div>
 </mat-card>
 <div class="mr-20">
     <mat-form-field class="full-width">
-        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="{{'Search'|translate}}">
     </mat-form-field>
 </div>
 
@@ -20,20 +19,20 @@
     </ng-container>
     <!-- Age Definition -->
     <ng-container matColumnDef="title">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Campaign Name </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header translate> Campaign Name </mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.title}} </mat-cell>
     </ng-container>
     <!-- Title Definition -->
     <ng-container matColumnDef="datefrom">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Start Date </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header translate> Start Date </mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.datefrom}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="dateto">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Due Date </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header translate> Due Date </mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.dateto}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="actions">
-        <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef translate> Actions </mat-header-cell>
         <mat-cell *matCellDef="let row">
             <!-- <button (click)="removeCampaign(campaign)" class="btn btn-sm btn-icon waves-effect waves-light btn-danger m-0 cm-button cm-delete">
                     <i class="fa fa-remove"></i>
