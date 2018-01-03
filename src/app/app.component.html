@@ -56,7 +56,11 @@
                             <small class="text-muted" translate>1 min ago</small>
                         </a>
                     </button>
-                    <p class="notify-item" translate>View all</p>
+                    <button mat-menu-item>
+                        <a href="#" class="notifi-text" translate>
+                            View all
+                        </a>
+                    </button>
                 </mat-menu>
 
                 <button mat-icon-button [matMenuTriggerFor]="appMenuOne">
@@ -69,7 +73,8 @@
                 <mat-menu #appMenu="matMenu" yPosition="below">
 
                     <h5 class="text-overflow notify-item">
-                        <small><span translate>Welcome</span> ! {{ name }}</small>
+                        <small>
+                            <span translate>Welcome</span> ! {{ name }}</small>
                     </h5>
 
                     <button mat-menu-item>
@@ -86,7 +91,11 @@
                             Logout
                         </a>
                     </button>
-                    <p class="notify-item" translate>View all</p>
+                    <button mat-menu-item>
+                        <a href="#" class="notifi-text" translate>
+                            View all
+                        </a>
+                    </button>
                 </mat-menu>
 
                 <button mat-icon-button [matMenuTriggerFor]="appMenu">

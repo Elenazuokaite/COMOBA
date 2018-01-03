@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
+import { AppService } from '../../../app.service';
 
 @Component({
   selector: 'app-group',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GroupComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private elRef: ElementRef,
+    private appService: AppService
+  ) { }
 
   ngOnInit() {
   }
-
+  remove(){
+    
+        this.elRef.nativeElement.querySelector('.time-selection').remove();
+        this.appService.openSnackBar();
+      }
 }

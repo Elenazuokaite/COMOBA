@@ -9,6 +9,13 @@ import { GlobalVariable } from '../../config';
 import { DatePipe } from '@angular/common';
 import { ViewEncapsulation, ViewChild, Directive, Pipe, PipeTransform } from '@angular/core';
 
+import { DayOfWeekComponent } from './day-of-week/day-of-week.component';
+import { GpsComponent } from './gps/gps.component';
+import { GroupComponent } from './group/group.component';
+import { TimeComponent } from './time/time.component';
+
+import { TargetsService } from '../shared/targets.service';
+
 @Component({
   selector: 'app-campaign-form',
   templateUrl: './campaign-form.component.html',
@@ -16,18 +23,18 @@ import { ViewEncapsulation, ViewChild, Directive, Pipe, PipeTransform } from '@a
   providers: [DatePipe],
 })
 export class CampaignFormComponent implements OnInit {
-
+targetSelected = "";
   someRange2config: any = {
     behaviour: 'drag',
     connect: true,
-    margin: 1, //must be divisible by step
-    limit:  24, //must be divisible by step
+    margin: 1,
+    limit:  24, 
     range: {
       min: 0,
       max: 24,
     },
     pips: {
-      mode: 'count', //there were too much pips to see anything
+      mode: 'count', 
       values: 5,
       density: 4
     },
@@ -69,7 +76,8 @@ someRange: number|number[] =  [6,22];
      private activatedRoute: ActivatedRoute,
      private campaignsService: CampaignsService,
      private formBuilder: FormBuilder,
-     private datePipe: DatePipe, ) {
+     private datePipe: DatePipe,
+    private targetsService:TargetsService, ) {
       this.form = formBuilder.group ({
         title: [''],
         dateto: [''],
@@ -115,6 +123,28 @@ someRange: number|number[] =  [6,22];
   });
 
   }
+
+  addTarget() {
+    
+       this.targetsService.createTarget(this.campaign.id, this.targetSelected).subscribe(
+         result => {
+           this.appendTarget(result);
+           }
+       );
+     }
+   
+     appendTarget(target:any){
+       if(target.type == "gps"){
+         this.targetsService.appendComponentToBody(GpsComponent, target);
+       }else if(target.type == "day" ){
+         this.targetsService.appendComponentToBody(DayOfWeekComponent, target);
+       }else if(target.type == "time"){
+         this.targetsService.appendComponentToBody(TimeComponent, target);
+       }else if(target.type == "group"){
+         this.targetsService.appendComponentToBody(GroupComponent, target);
+       }
+     }
+
   onUploadFinished(file: any) {
     alert('uploaded!');
   }

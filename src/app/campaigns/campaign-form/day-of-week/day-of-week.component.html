@@ -1,48 +1,37 @@
-<div class="portlet" id="TARGET-68">
-  <div class="portlet-heading bg-primary">
-    <h3 class="portlet-title">Day of the week</h3>
-    <div class="portlet-widgets">
-      <span class="divider"></span>
-      <a data-toggle="collapse" data-parent="#accordion2" href="#bg-primary2">
-        <i class="ion-minus-round"></i>
-      </a>
-      <span class="divider"></span>
-      <a href="#" data-toggle="remove">
-        <i class="ion-close-round"></i>
-      </a>
-    </div>
-    <div class="clearfix"></div>
+<mat-expansion-panel class="time-selection" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+  <mat-expansion-panel-header>
+    <mat-panel-title class="ln-height" translate>
+      DAY OF WEEK     
+    </mat-panel-title> 
+    <button mat-icon-button (click)="remove()">
+        <mat-icon>clear</mat-icon>
+    </button>
+    <mat-panel-description>
+
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <div>
+    <mat-checkbox name="days" value="Monday">
+      <span translate>Monday</span>
+    </mat-checkbox>
+    <mat-checkbox name="days" value="Tuesday">
+      <span translate>Tuesday</span>
+    </mat-checkbox>
+    <mat-checkbox name="days" value="Wednesday">
+      <span translate>Wednesday</span>
+    </mat-checkbox>
+    <mat-checkbox name="days" value="Thursday">
+      <span translate>Thursday</span>
+    </mat-checkbox>
+    <mat-checkbox name="days" value="Friday">
+      <span translate>Friday</span>
+    </mat-checkbox>
+    <mat-checkbox name="days" value="Sunday">
+      <span translate>Sunday</span>
+    </mat-checkbox>
+    <mat-checkbox name="days" value="Saturday">
+      <span translate>Saturday</span>
+    </mat-checkbox>
   </div>
-  <div id="bg-primary2" class="panel-collapse collapse show">
-    <div class="portlet-body">
-      <div class="checkbox form-check-inline">
-        <input type="checkbox" id="inlineCheckbox1" name="days" value="Monday">
-        <label for="inlineCheckbox1"> Monday </label>
-      </div>
-      <div class="checkbox form-check-inline">
-        <input type="checkbox" id="inlineCheckbox2" name="days" value="Tuesday">
-        <label for="inlineCheckbox2"> Tuesday </label>
-      </div>
-      <div class="checkbox form-check-inline">
-        <input type="checkbox" id="inlineCheckbox3" name="days" value="Wednesday">
-        <label for="inlineCheckbox3"> Wednesday </label>
-      </div>
-      <div class="checkbox form-check-inline">
-        <input type="checkbox" name="days" id="inlineCheckbox4" value="Thursday">
-        <label for="inlineCheckbox4"> Thursday </label>
-      </div>
-      <div class="checkbox form-check-inline">
-        <input type="checkbox" name="days" id="inlineCheckbox5" value="Friday">
-        <label for="inlineCheckbox5"> Friday </label>
-      </div>
-      <div class="checkbox form-check-inline">
-        <input type="checkbox" name="days" id="inlineCheckbox6" value="Saturday">
-        <label for="inlineCheckbox6"> Saturday </label>
-      </div>
-      <div class="checkbox form-check-inline">
-        <input type="checkbox" name="days" id="inlineCheckbox7" value="Sunday">
-        <label for="inlineCheckbox7"> Sunday </label>
-      </div>
-    </div>
-  </div>
-</div>
+
+</mat-expansion-panel>

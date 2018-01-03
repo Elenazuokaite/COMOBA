@@ -50,22 +50,26 @@
     </div>
 </mat-card>
 <h3 translate>Campaign targets</h3>
-<!-- <div class="mr-20">
+<div class="mr-20">
     <form>
         <mat-form-field>
-            <mat-select [(value)]="selected" id="options">
-                <mat-option>None</mat-option>
-                <mat-option value="Time">Time</mat-option>
-                <mat-option value="Days of week">Days of week</mat-option>
-                <mat-option value="GPS">GPS</mat-option>
-                <mat-option value="Group">Group</mat-option>
+            <mat-select class="select-targets" [(value)]="targetSelected">
+                <mat-option value="" selected>-</mat-option>
+                <mat-option value="time">Time</mat-option>
+                <mat-option value="day">Days of week</mat-option>
+                <mat-option value="gps">GPS</mat-option>
+                <mat-option value="group">Group</mat-option>
             </mat-select>
-        </mat-form-field>
-        <button type="submit" id="addButton" mat-raised-button color="accent">+ Add</button>
+          </mat-form-field>
+          <button (click)="addTarget()" class="warning-btn select-target-btn" mat-button type="button" name="button">+ Add Campaign Targets</button>
+    
     </form>
     <hr>
-</div> -->
+</div>
 <div class="mr-20">
+    <mat-accordion id="campaign_targets"></mat-accordion>
+</div>
+<!-- <div class="mr-20">
     <mat-accordion>
         <mat-expansion-panel>
             <mat-expansion-panel-header>
@@ -77,31 +81,12 @@
                 </mat-panel-description>
             </mat-expansion-panel-header>
             <div class="pd-24">
-                <!-- <mat-slider class="full-width" min="0" max="24" step="1" value="0" thumbLabel tickInterval="6"></mat-slider> -->
                 <p>{{ someRange[0] }} - {{ someRange[1] }}</p>
                 <nouislider [connect]="true" [min]="0" [max]="15" [(ngModel)]="someRange" [config]="someRange2config"></nouislider>
             </div>
            
         </mat-expansion-panel>
-        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-            <mat-expansion-panel-header>
-                <mat-panel-title translate>
-                     DAY OF WEEK
-                </mat-panel-title>
-                <mat-panel-description>
-                   
-                </mat-panel-description>
-            </mat-expansion-panel-header>
-            <div>
-                <mat-checkbox name="days" value="Monday"><span translate>Monday</span></mat-checkbox>
-                <mat-checkbox name="days" value="Tuesday"><span translate>Tuesday</span></mat-checkbox>
-                <mat-checkbox name="days" value="Wednesday"><span translate>Wednesday</span></mat-checkbox>
-                <mat-checkbox name="days" value="Thursday"><span translate>Thursday</span></mat-checkbox>
-                <mat-checkbox name="days" value="Friday"><span translate>Friday</span></mat-checkbox>
-                <mat-checkbox name="days" value="Sunday"><span translate>Sunday</span></mat-checkbox>
-                <mat-checkbox name="days" value="Saturday"><span translate>Saturday</span></mat-checkbox>
-            </div>
-        </mat-expansion-panel>
+        <app-day-of-week></app-day-of-week>
         <mat-expansion-panel>
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
@@ -133,7 +118,7 @@
         </mat-expansion-panel>
     </mat-accordion>
     <hr>
-</div>
+</div> -->
 <!-- <mat-card class="mr-20 time-range">
     <mat-toolbar>
         <mat-toolbar-row>

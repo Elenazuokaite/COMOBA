@@ -1,13 +1,16 @@
 import {Injectable} from '@angular/core';
 import 'rxjs/Rx';
 import {Observable, Subject} from 'rxjs';
+import {MatSnackBar} from '@angular/material';
 
 @Injectable()
 export class AppService {
 
     private subjects: Subject<any>[] = [];
 
-    constructor() {
+    constructor(
+        public snackBar: MatSnackBar
+    ) {
 
     }
 
@@ -22,4 +25,9 @@ export class AppService {
         this.subjects[eventName] = this.subjects[eventName] || new Subject<any>();
         return this.subjects[eventName].asObservable();
     }
+    openSnackBar() {
+        this.snackBar.open('Target removed', '', {
+          duration: 3000,
+        });
+      }  
 }

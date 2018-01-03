@@ -23,6 +23,7 @@ import { AuthGuardService } from './auth-guard.service';
 import { UserService } from './profile/shared/user.service';
 import { CampaignsService } from './campaigns/shared/campaigns.service';
 import { WalletService } from './wallet/shared/wallet.service';
+import { TargetsService } from './campaigns/shared/targets.service';
 
 import { AppComponent } from './app.component';
 import { TopNavbarComponent } from './top-navbar/top-navbar.component';
@@ -56,6 +57,8 @@ import { ImageUploadModule } from "angular2-image-upload";
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+//snackbar
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 //date pipe
 import { DatePipe } from '@angular/common';
 // import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -112,6 +115,12 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     TimeComponent,
     WalletComponent,
   ],
+  entryComponents: [
+    GpsComponent,
+    GroupComponent,
+    TimeComponent,
+    DayOfWeekComponent,
+  ],
   imports: [
     BrowserModule,
     routing,
@@ -151,11 +160,12 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    MatSnackBarModule
   ],
   providers: [ AppService, AuthService,
     AuthGuardService, UserService, CampaignsService, WalletService,
-    MediaMatcher,
+    MediaMatcher, TargetsService,
     {
       provide: AuthHttp,
       useFactory: authHttpServiceFactory,
