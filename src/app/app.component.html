@@ -20,8 +20,8 @@
         <ul class="notification-list">
             <li>
                 <mat-select class="lang-select" (change)="langChange($event.value)" [(value)]="selected">
-                    <mat-option value="en">English</mat-option>
-                    <mat-option value="lt">Lietuvių</mat-option>
+                    <mat-option value="en">EN</mat-option>
+                    <mat-option value="lt">LT</mat-option>
                 </mat-select>
             </li>
             <li>
@@ -31,7 +31,7 @@
             </li>
             <li>
                 <mat-menu #appMenuOne="matMenu">
-                    <p translate>Welcome</p>
+                    <p class="notify-item" translate>Welcome</p>
                     <button mat-menu-item>
                         <mat-icon class="small-icon bg-blue">play_arrow</mat-icon>
                         <a href="" class="notifi-text" translate>
@@ -56,7 +56,7 @@
                             <small class="text-muted" translate>1 min ago</small>
                         </a>
                     </button>
-                    <p translate>View all</p>
+                    <p class="notify-item" translate>View all</p>
                 </mat-menu>
 
                 <button mat-icon-button [matMenuTriggerFor]="appMenuOne">
@@ -68,8 +68,8 @@
             <li>
                 <mat-menu #appMenu="matMenu" yPosition="below">
 
-                    <h5 class="text-overflow">
-                        <small translate>Welcome ! {{ name }}</small>
+                    <h5 class="text-overflow notify-item">
+                        <small><span translate>Welcome</span> ! {{ name }}</small>
                     </h5>
 
                     <button mat-menu-item>
@@ -86,7 +86,7 @@
                             Logout
                         </a>
                     </button>
-                    <p translate>View all</p>
+                    <p class="notify-item" translate>View all</p>
                 </mat-menu>
 
                 <button mat-icon-button [matMenuTriggerFor]="appMenu">

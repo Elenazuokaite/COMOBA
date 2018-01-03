@@ -14,41 +14,41 @@
       </div>
       <div>
         <h2>{{ wallet.amount }} EUR</h2>
-        <h4>Current balance</h4>
+        <h4 translate>Current balance</h4>
       </div>
 
     </div>
   </div>
   <div class="chart-lg border-rad">
-    <h4>Top up account</h4>
+    <h4 translate>Top up account</h4>
     <form [formGroup]="form" (ngSubmit)="onSave(f)" #f="ngForm">
       <mat-form-field [formGroup]="form">
        <input matInput placeholder="" type="text" name="topUp" id="WalletTopUp" formControlName="amount" class="form-control" [(ngModel)]="wallet.amount">
       </mat-form-field>
-      <button mat-raised-button color="primary" type="submit">Top up</button>
+      <button mat-raised-button color="primary" type="submit"><span translate>Top up</span></button>
     </form>      
   </div>
 </div>
 <div class="charts">
   <div class="chart-lg chart-wallet border-rad">
-  <h4>Transaction history</h4>
+  <h4 translate>Transaction history</h4>
   <mat-table class="mr-20" #table [dataSource]="dataSource">
       <ng-container matColumnDef="createdAt">
-          <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+          <mat-header-cell *matHeaderCellDef translate> Date </mat-header-cell>
           <mat-cell *matCellDef="let row"> {{row.createdAt.replace('T', ' ').slice(0, 19)}} </mat-cell>
       </ng-container>
       <!-- Age Definition -->
       <ng-container matColumnDef="status">
-          <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+          <mat-header-cell *matHeaderCellDef translate> Status </mat-header-cell>
           <mat-cell *matCellDef="let row"> {{row.status}} </mat-cell>
       </ng-container>
       <!-- Title Definition -->
       <ng-container matColumnDef="type">
-          <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+          <mat-header-cell *matHeaderCellDef translate> Action </mat-header-cell>
           <mat-cell *matCellDef="let row"> {{row.type}} </mat-cell>
       </ng-container>
       <ng-container matColumnDef="amount">
-          <mat-header-cell *matHeaderCellDef> Sum </mat-header-cell>
+          <mat-header-cell *matHeaderCellDef translate> Sum </mat-header-cell>
           <mat-cell *matCellDef="let row"> {{row.amount}} </mat-cell>
       </ng-container>  
       <!-- Header and Row Declarations -->

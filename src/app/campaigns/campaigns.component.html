@@ -19,16 +19,16 @@
     </ng-container>
     <!-- Age Definition -->
     <ng-container matColumnDef="title">
-        <mat-header-cell *matHeaderCellDef mat-sort-header translate> Campaign Name </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header><span translate>Campaign Name</span></mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.title}} </mat-cell>
     </ng-container>
     <!-- Title Definition -->
     <ng-container matColumnDef="datefrom">
-        <mat-header-cell *matHeaderCellDef mat-sort-header translate> Start Date </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header><span translate>Start Date</span></mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.datefrom}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="dateto">
-        <mat-header-cell *matHeaderCellDef mat-sort-header translate> Due Date </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header><span translate>Due Date</span></mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.dateto}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="actions">

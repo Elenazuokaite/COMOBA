@@ -8,8 +8,12 @@
 
 .lang-select {
     width: 120px;
+    .mat-select-trigger {
+    vertical-align: text-top;
+}
     .mat-select-value  {
         color: rgba(225, 225, 225, 1);
+        text-align: right;
     }
     .mat-select-arrow {
         color: rgba(225, 225, 225, 1);

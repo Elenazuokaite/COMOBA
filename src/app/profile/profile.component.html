@@ -9,23 +9,23 @@
     <form [formGroup]="form" (ngSubmit)="onSave(f)" #f="ngForm">
 
         <mat-form-field class="full-width">
-            <input matInput placeholder="Email" value="{{ profile?.email }}" id="EmailLogin" type="email">
+            <input matInput placeholder="{{'Email'|translate}}" value="{{ profile?.email }}" id="EmailLogin" type="email">
         </mat-form-field>  
     
         <hr>
-        <h4>Company details</h4>
+        <h4 translate>Company details</h4>
         <mat-form-field class="full-width">
-            <input matInput placeholder="Company Name" value="" id="company_name" type="text" [(ngModel)]="user.company" formControlName="company">
+            <input matInput placeholder="{{'Company Name'|translate}}" value="" id="company_name" type="text" [(ngModel)]="user.company" formControlName="company">
         </mat-form-field>
         <mat-form-field class="full-width">
-            <input matInput placeholder="Company Address" value="" id="company_address" type="text" [(ngModel)]="user.address" formControlName="address">
+            <input matInput placeholder="{{'Company Address'|translate}}" value="" id="company_address" type="text" [(ngModel)]="user.address" formControlName="address">
         </mat-form-field>
         <mat-form-field class="full-width">
-            <input matInput placeholder="Company Code" value="" id="company_code" type="text" [(ngModel)]="user.code" formControlName="code">
+            <input matInput placeholder="{{'Company Code'|translate}}" value="" id="company_code" type="text" [(ngModel)]="user.code" formControlName="code">
         </mat-form-field>
         <mat-form-field class="full-width">
-            <input matInput placeholder="Company VAT code" value="" id="company_vat" type="text" [(ngModel)]="user.vat" formControlName="vat">
+            <input matInput placeholder="{{'Company VAT code'|translate}}" value="" id="company_vat" type="text" [(ngModel)]="user.vat" formControlName="vat">
         </mat-form-field>
-        <button mat-raised-button color="primary" type="submit">Save</button>
+        <button mat-raised-button color="primary" type="submit"><span translate>Save</span></button>
     </form>
 </mat-card>
